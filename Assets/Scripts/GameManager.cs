@@ -27,8 +27,9 @@ public class GameManager : MonoBehaviour {
 	private void Start()
 	{
         if(startingLocation != null){
-            currentNode = startingLocation;
-            currentNode.OnArrival();
+            onObjectSelected(startingLocation.gameObject);
+            //currentNode = startingLocation;
+            //currentNode.OnArrival();
         }
 	}
 
