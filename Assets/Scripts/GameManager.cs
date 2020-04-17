@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager instance = null;
     public Character character = null;
     public Location startingLocation = null;
+    public IVCanvas iVCanvas;
 
     [HideInInspector]
     public Node currentNode = null;
