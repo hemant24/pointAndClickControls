@@ -14,12 +14,17 @@ public class Node : MonoBehaviour {
     public Collider coll;
 
 
-	private void Start()
+	private void Awake()
 	{
         coll = GetComponent<Collider>();
+        if(coll != null){
+            coll.enabled = false;
+        }
+       
+
 	}
 
-    public void OnLeave()
+    public virtual void OnLeave()
     {
 
         foreach (Node n in reachableNodes)
@@ -32,7 +37,7 @@ public class Node : MonoBehaviour {
 
     }
 
-	public void OnArrival()
+    public virtual void OnArrival()
 	{
         //Debug.Log("Yes mouse down");
         //Camera.main.transform.position = cameraPosition.position;

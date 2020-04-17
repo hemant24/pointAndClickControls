@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
     public Character character = null;
+    public Location startingLocation = null;
 
     [HideInInspector]
     public Node currentNode = null;
@@ -23,8 +24,16 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
+	private void Start()
+	{
+        if(startingLocation != null){
+            currentNode = startingLocation;
+            currentNode.OnArrival();
+        }
+	}
 
-    public void onObjectSelected(GameObject obj){
+
+	public void onObjectSelected(GameObject obj){
         if (obj.GetComponent<Node>() != null){
             if(currentNode != null){
                 currentNode.OnLeave();
@@ -52,6 +61,7 @@ public class GameManager : MonoBehaviour {
         if (currentNode != null && currentNode.GetComponent<Node>() != null)
         {
             Location locToBeCalled = currentNode.GetComponent<Node>().loc;
+            currentNode.OnLeave();
             currentNode = currentNode.GetComponent<Node>().loc;
             locToBeCalled.OnArrival();
         }
