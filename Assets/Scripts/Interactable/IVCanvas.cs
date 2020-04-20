@@ -13,8 +13,17 @@ public class IVCanvas : MonoBehaviour {
 	}
 	
     public void Activate(Sprite image){
+        GameManager.instance.currentNode.SetReachableNodesCollider(false);
+        GameManager.instance.currentNode.coll.enabled = false;
         gameObject.SetActive(true);
         imageHolder.sprite = image;
 
+    }
+
+    public void Close(){
+        GameManager.instance.currentNode.SetReachableNodesCollider(true);
+        GameManager.instance.currentNode.coll.enabled = true;
+        gameObject.SetActive(false);
+        imageHolder.sprite = null;
     }
 }

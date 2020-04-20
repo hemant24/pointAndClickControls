@@ -26,37 +26,34 @@ public class Node : MonoBehaviour {
 
     public virtual void OnLeave()
     {
-
-        foreach (Node n in reachableNodes)
-        {
-            if (n.coll != null)
-            {
-                n.coll.enabled = false;
-            }
-        }
+        SetReachableNodesCollider(false);
 
     }
 
     public virtual void OnArrival()
-	{
+    {
         //Debug.Log("Yes mouse down");
         //Camera.main.transform.position = cameraPosition.position;
         //Camera.main.transform.rotation = cameraPosition.rotation;
-        if(coll != null )
+        if (coll != null)
         {
-          this.coll.enabled = false;
+            this.coll.enabled = false;
         }
-       
 
-        foreach(Node n in reachableNodes)
+        SetReachableNodesCollider(true);
+        GameManager.instance.alignTo(cameraPosition);
+    }
+
+    public void SetReachableNodesCollider(bool set){
+        foreach (Node n in reachableNodes)
         {
-            if(n.coll != null)
+            if (n.coll != null)
             {
-                n.coll.enabled = true;
+                n.coll.enabled = set;
             }
         }
-        GameManager.instance.alignTo(cameraPosition);
-	}
+
+    }
 
 
 

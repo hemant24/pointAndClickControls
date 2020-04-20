@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour {
      
         if (currentNode != null && currentNode.GetComponent<Node>() != null)
         {
+            if(iVCanvas.gameObject.activeInHierarchy){
+                iVCanvas.Close();
+                return;
+            }
             Location locToBeCalled = currentNode.GetComponent<Node>().loc;
             currentNode.OnLeave();
             currentNode = currentNode.GetComponent<Node>().loc;
