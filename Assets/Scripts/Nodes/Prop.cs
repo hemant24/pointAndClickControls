@@ -12,7 +12,7 @@ public class Prop : Node
         interactable = GetComponent<Interactable>();
 	}
 
-    void OnMouseDown()
+    void OnMouseUp()
     {
         if (interactable != null && interactable.enabled)
         {

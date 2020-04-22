@@ -6,12 +6,21 @@ using DG.Tweening;
  * 
  * Singletone implemetation got from : https://www.studica.com/blog/how-to-create-a-singleton-in-unity-3d
  */
+
+/**
+ * Open Issues
+ * - Sometimes when game starts it does not detect double click.
+ * - First time Image viewer does not open up.
+ * 
+ */
+
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
     public Character character = null;
     public Location startingLocation = null;
     public IVCanvas iVCanvas;
+    public ObsCamera obsCamera;
 
     [HideInInspector]
     public Node currentNode = null;
@@ -64,6 +73,11 @@ public class GameManager : MonoBehaviour {
         {
             if(iVCanvas.gameObject.activeInHierarchy){
                 iVCanvas.Close();
+                return;
+            }
+            if (obsCamera.gameObject.activeInHierarchy)
+            {
+                obsCamera.Close();
                 return;
             }
             Location locToBeCalled = currentNode.GetComponent<Node>().loc;

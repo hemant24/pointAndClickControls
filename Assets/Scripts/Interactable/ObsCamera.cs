@@ -1,0 +1,64 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ObsCamera : MonoBehaviour {
+
+    [HideInInspector]
+    public Transform model;
+    public Transform rig;
+
+    private GameObject itemHolder;
+
+    public float rotateSpeed = 8f;
+    public float minimumVert = -45.0f;
+    public float maximumVert = 45.0f;
+
+    private float deltaY = 0.0f;
+    private int invertedPith = -1;
+
+    public void Close(){
+        Destroy(itemHolder);
+        model = null;
+        //rig.localRotation = Quaternion.Euler(Vector3.zero); This does not work
+        rig.rotation = Quaternion.identity;
+        deltaY = 0;
+        gameObject.SetActive(false);
+    }
+
+    public void Activate(GameObject gObject){
+        itemHolder = Instantiate(gObject);
+        itemHolder.transform.SetParent(rig);
+        itemHolder.transform.localPosition = Vector3.zero;
+        itemHolder.transform.GetChild(0).localPosition = Vector3.zero;
+        model = itemHolder.transform;
+        gameObject.SetActive(true);
+    }
+
+    void Start () {
+        gameObject.SetActive(false);
+    }
+
+	private void Update()
+	{
+        if (Input.touches.Length == 1 && 
+            Input.GetTouch(0).phase == TouchPhase.Moved && 
+            model != null){
+
+            //Rotate model
+            model.Rotate(0, Input.GetTouch(0).deltaPosition.x * rotateSpeed * Time.deltaTime * invertedPith, 0);
+
+
+            //Rotate rig
+            //rig.Rotate(Input.GetTouch(0).deltaPosition.y * rotateSpeed * Time.deltaTime * invertedPith * -1, 0, 0);
+
+            deltaY -= Input.GetTouch(0).deltaPosition.y * rotateSpeed * Time.deltaTime * invertedPith;
+            deltaY = Mathf.Clamp(deltaY, minimumVert, maximumVert);
+            float rotationY = rig.localEulerAngles.y;
+            rig.localEulerAngles = new Vector3(deltaY, rotationY, 0);
+
+
+        }
+	}
+
+}

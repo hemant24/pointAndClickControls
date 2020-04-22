@@ -56,7 +56,8 @@ public class Character : MonoBehaviour
     {
         if (Input.touches.Length == 1 && 
             Input.GetTouch(0).phase == TouchPhase.Moved && 
-            !GameManager.instance.iVCanvas.gameObject.activeInHierarchy)
+            !GameManager.instance.iVCanvas.gameObject.activeInHierarchy &&
+            !GameManager.instance.obsCamera.gameObject.activeInHierarchy)
         {
             //Rotate Character
             transform.Rotate(0, Input.GetTouch(0).deltaPosition.x * rotateSpeed * Time.deltaTime * invertedPith, 0);
