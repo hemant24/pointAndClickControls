@@ -27,12 +27,15 @@ public class ObsCamera : MonoBehaviour {
     }
 
     public void Activate(GameObject gObject){
+        
+        Debug.Log("inside activate");
+        //gameObject.SetActive(true);
         itemHolder = Instantiate(gObject);
         itemHolder.transform.SetParent(rig);
         itemHolder.transform.localPosition = Vector3.zero;
         itemHolder.transform.GetChild(0).localPosition = Vector3.zero;
         model = itemHolder.transform;
-        gameObject.SetActive(true);
+        gameObject.SetActive(true); //TODO: this is not working at very first time
     }
 
     void Start () {

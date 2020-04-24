@@ -47,6 +47,12 @@ public class Node : MonoBehaviour {
     public void SetReachableNodesCollider(bool set){
         foreach (Node n in reachableNodes)
         {
+            if(n.GetComponent<Prerequisite>() != null && 
+               !n.GetComponent<Prerequisite>().Complete &&
+               !n.GetComponent<Prerequisite>().nodeAccess ){
+                return;
+            }
+                
             if (n.coll != null)
             {
                 n.coll.enabled = set;

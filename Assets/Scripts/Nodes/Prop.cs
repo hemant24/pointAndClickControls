@@ -24,7 +24,10 @@ public class Prop : Node
 	public override void OnArrival()
 	{
 		base.OnArrival();
-        if(interactable != null){
+        if(interactable != null ){
+            if(GetComponent<Prerequisite>() != null && !GetComponent<Prerequisite>().Complete){
+                return;
+            }
             coll.enabled = true;
             interactable.enabled = true;
         }
