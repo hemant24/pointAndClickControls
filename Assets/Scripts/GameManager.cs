@@ -21,6 +21,10 @@ public class GameManager : MonoBehaviour {
     public Location startingLocation = null;
     public IVCanvas iVCanvas;
     public ObsCamera obsCamera;
+    public Item inventory;
+
+    public delegate void OnItemCollected(Item item);
+    public event OnItemCollected ItemCollected;
 
     [HideInInspector]
     public Node currentNode = null;
@@ -43,6 +47,14 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
+    public void AddToInventory(Item item)
+    {
+        inventory = item;
+        if (ItemCollected != null)
+        {
+            ItemCollected(item);
+        }
+    }
 
 	public void onObjectSelected(GameObject obj){
         if (obj.GetComponent<Node>() != null){
