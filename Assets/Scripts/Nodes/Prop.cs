@@ -25,7 +25,7 @@ public class Prop : Node
 	{
 		base.OnArrival();
         if(interactable != null ){
-            if(GetComponent<Prerequisite>() != null && !GetComponent<Prerequisite>().Complete){
+            if(GetComponent<Prerequisite>() != null && !GetComponent<Prerequisite>().IsCompleted()){
                 return;
             }
             coll.enabled = true;

@@ -307,11 +307,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 189865038}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1612faef75058446ca09f452e805f8bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 534a8bb49b7db4647bf5d2c9fee4fa12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switcher: {fileID: 1795222662}
   nodeAccess: 0
+  switcher: {fileID: 1795222662}
 --- !u!1 &206251316
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 376606227}
   - component: {fileID: 376606226}
   m_Layer: 0
-  m_Name: CubeModel
+  m_Name: ChairModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1329,11 +1329,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 961810288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1612faef75058446ca09f452e805f8bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 534a8bb49b7db4647bf5d2c9fee4fa12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  switcher: {fileID: 1795222662}
   nodeAccess: 1
+  switcher: {fileID: 1795222662}
 --- !u!1 &1018852308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2501,6 +2501,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+--- !u!114 &1795222663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1795222658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf3d19eac63443278868c0225d1487f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeAccess: 0
+  item:
+    itemName: Gold Key
 --- !u!1 &1918250023
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,8 +2653,9 @@ GameObject:
   - component: {fileID: 1979748782}
   - component: {fileID: 1979748784}
   - component: {fileID: 1979748783}
+  - component: {fileID: 1979748785}
   m_Layer: 5
-  m_Name: Text
+  m_Name: InventoryDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2659,10 +2674,10 @@ RectTransform:
   m_Father: {fileID: 1712539295}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 272, y: -74}
+  m_SizeDelta: {x: 452.6, y: 80.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979748783
 MonoBehaviour:
@@ -2685,24 +2700,35 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Item Held:'
 --- !u!222 &1979748784
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1979748781}
+--- !u!114 &1979748785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1979748781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117ccb296a6024f4591ab88acf2729bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2046245555
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ public class Node : MonoBehaviour {
         foreach (Node n in reachableNodes)
         {
             if(n.GetComponent<Prerequisite>() != null && 
-               !n.GetComponent<Prerequisite>().Complete &&
+               !n.GetComponent<Prerequisite>().IsCompleted() &&
                !n.GetComponent<Prerequisite>().nodeAccess ){
                 return;
             }
