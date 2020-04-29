@@ -9,6 +9,7 @@ public class ObsCamera : MonoBehaviour {
     public Transform rig;
 
     private GameObject itemHolder;
+    [SerializeField] private CameraInputData camInputData = null;
 
     public float rotateSpeed = 8f;
     public float minimumVert = -45.0f;
@@ -44,18 +45,17 @@ public class ObsCamera : MonoBehaviour {
 
 	private void Update()
 	{
-        if (Input.touches.Length == 1 && 
-            Input.GetTouch(0).phase == TouchPhase.Moved && 
-            model != null){
+        if (model != null){
 
             //Rotate model
-            model.Rotate(0, Input.GetTouch(0).deltaPosition.x * rotateSpeed * Time.deltaTime * invertedPith, 0);
+
+            model.Rotate(0, camInputData.InputVectorX * rotateSpeed * Time.deltaTime * invertedPith, 0);
 
 
             //Rotate rig
             //rig.Rotate(Input.GetTouch(0).deltaPosition.y * rotateSpeed * Time.deltaTime * invertedPith * -1, 0, 0);
 
-            deltaY -= Input.GetTouch(0).deltaPosition.y * rotateSpeed * Time.deltaTime * invertedPith;
+            deltaY -= camInputData.InputVectorY * rotateSpeed * Time.deltaTime * invertedPith;
             deltaY = Mathf.Clamp(deltaY, minimumVert, maximumVert);
             float rotationY = rig.localEulerAngles.y;
             rig.localEulerAngles = new Vector3(deltaY, rotationY, 0);

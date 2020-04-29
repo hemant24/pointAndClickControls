@@ -17,7 +17,7 @@ using DG.Tweening;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance = null;
-    public Character character = null;
+    public CameraController character = null;
     public Location startingLocation = null;
     public IVCanvas iVCanvas;
     public ObsCamera obsCamera;

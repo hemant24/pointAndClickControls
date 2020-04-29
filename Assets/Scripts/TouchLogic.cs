@@ -24,8 +24,8 @@ public class TouchLogic : MonoBehaviour {
         {
             //Debug.Log("yes touching Single finger");
             ResetDoubleTouch();
-            //HandleSingleTouch();
-            HandleDoubleTap();
+
+            //HandleDoubleTap();
         }
 
         if (Input.touches.Length == 2)

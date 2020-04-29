@@ -30,6 +30,10 @@ public class Node : MonoBehaviour {
 
     }
 
+    public Transform getOnArrivalTransform(){
+        return cameraPosition;
+    }
+
     public virtual void OnArrival()
     {
         //Debug.Log("Yes mouse down");
@@ -41,7 +45,7 @@ public class Node : MonoBehaviour {
         }
 
         SetReachableNodesCollider(true);
-        GameManager.instance.alignTo(cameraPosition);
+        //GameManager.instance.alignTo(cameraPosition);
     }
 
     public void SetReachableNodesCollider(bool set){
